@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LifeLink – Organ &amp; Blood Donor Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#top">LifeLink</a>
+  <nav>
+    <a href="#find">Find a donor</a>
+    <a href="#register">Become a donor</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- FINDER -->
+  <section class="hero" id="find">
+    <h1>Find a donor.<br>Or become one.</h1>
+    <p class="lead">Search registered donors by blood group, organ and city.</p>
+
+    <form id="finderForm" class="finder" novalidate>
+      <fieldset>
+        <legend>Blood group needed</legend>
+        <div class="groups" id="groupPicker"></div>
+      </fieldset>
+
+      <div class="row">
+        <label>Organ or donation
+          <select id="fOrgan">
+            <option value="">Any</option>
+            <option>Blood</option>
+            <option>Kidney</option>
+            <option>Liver</option>
+            <option>Cornea</option>
+            <option>Bone marrow</option>
+            <option>Heart</option>
+            <option>Lungs</option>
+          </select>
+        </label>
+        <label>City
+          <input id="fCity" type="text" placeholder="e.g. Chennai" autocomplete="address-level2">
+        </label>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="fCompat" checked>
+        Include compatible blood groups
+      </label>
+
+      <button class="btn" type="submit">Search donors</button>
+    </form>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results" aria-live="polite">
+    <h2 id="resultsTitle">Registered donors</h2>
+    <div id="resultsList" class="list"></div>
+  </section>
+
+  <!-- REGISTER -->
+  <section class="register" id="register">
+    <div class="reg-copy">
+      <h2>Become a donor</h2>
+      <p>One registration can help several people. Tell us what you are willing to donate and how recipients can reach you.</p>
+      <p class="small">Registering here is a statement of intent. Organ donation after death also needs your family’s consent, so tell them your decision.</p>
+    </div>
+
+    <form id="donorForm" class="card-form" novalidate>
+      <label>Full name
+        <input id="dName" type="text" required autocomplete="name">
+        <span class="err" data-for="dName"></span>
+      </label>
+
+      <div class="row">
+        <label>Age
+          <input id="dAge" type="number" min="18" max="65" required>
+          <span class="err" data-for="dAge"></span>
+        </label>
+        <label>Blood group
+          <select id="dGroup" required>
+            <option value="">Choose</option>
+          </select>
+          <span class="err" data-for="dGroup"></span>
+        </label>
+      </div>
+
+      <label>What will you donate?
+        <select id="dOrgan" required>
+          <option value="">Choose</option>
+          <option>Blood</option>
+          <option>Kidney</option>
+          <option>Liver</option>
+          <option>Cornea</option>
+          <option>Bone marrow</option>
+          <option>Heart</option>
+          <option>Lungs</option>
+        </select>
+        <span class="err" data-for="dOrgan"></span>
+      </label>
+
+      <div class="row">
+        <label>City
+          <input id="dCity" type="text" required autocomplete="address-level2">
+          <span class="err" data-for="dCity"></span>
+        </label>
+        <label>Mobile number
+          <input id="dPhone" type="tel" inputmode="numeric" placeholder="10 digits" required autocomplete="tel-national">
+          <span class="err" data-for="dPhone"></span>
+        </label>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="dConsent" required>
+        I agree to share my name, city and contact number with people searching for donors.
+      </label>
+      <span class="err" data-for="dConsent"></span>
+
+      <button class="btn" type="submit">Register as donor</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>This is a demo site. Donor records are saved only in your browser and are sample data. For real organ donation, register with your state’s authority or NOTTO (notto.mohfw.gov.in) and contact a hospital.</p>
+</footer>
+
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
